@@ -48,6 +48,8 @@
                 {
                     Console.WriteLine();
                     Console.WriteLine("That's not an option, silly goose.");
+                    Console.WriteLine("Press Enter to Go Back");
+                    Console.ReadLine();
                 }
 
             }
