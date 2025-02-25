@@ -2,6 +2,59 @@
 {
     internal class Program
     {
+        public static void Prompt()
+        {
+            int min, max, userNum;
+            bool done = false;
+
+            while (!done)
+            {
+                Console.WriteLine("Hello! Please enter a min and a max number:");
+                while (!Int32.TryParse(Console.ReadLine(), out min) || !Int32.TryParse(Console.ReadLine(), out max))
+                    Console.WriteLine("Invalid Integer, Please Try Again:");
+
+                while (min >= max)
+                {
+                    Console.WriteLine();
+                    Console.WriteLine("Min Number cannot be bigger than, (or the same as), the Max Number. Please Try Again:");
+                    while (!Int32.TryParse(Console.ReadLine(), out min) || !Int32.TryParse(Console.ReadLine(), out max))
+                        Console.WriteLine("Invalid Integer, Please Try Again:");
+                }
+                while (min < 0 || max < 0)
+                {
+                    Console.WriteLine();
+                    Console.WriteLine("Min and/or Max Number cannot be negative. Please Try Again:");
+                    while (!Int32.TryParse(Console.ReadLine(), out min) || !Int32.TryParse(Console.ReadLine(), out max))
+                        Console.WriteLine("Invalid Integer, Please Try Again:");
+                }
+
+                Console.WriteLine();
+                Console.WriteLine($"You choose {min} through {max}.");
+                Console.WriteLine("Now, choose a number between that range of numbers.");
+                while (!Int32.TryParse(Console.ReadLine(), out userNum))
+                    Console.WriteLine("Invalid Integer. Please Try Again:");
+
+                while (userNum < min || userNum > max)
+                {
+                    Console.WriteLine();
+                    Console.WriteLine("Your Number cannot be smaller than the Min Number, or bigger than the Max Number.");
+                    Console.WriteLine("Please Try Again:");
+                    while (!Int32.TryParse(Console.ReadLine(), out userNum))
+                        Console.WriteLine("Invalid Integer. Please Try Again:");
+                }
+                while (userNum < 0)
+                {
+                    Console.WriteLine();
+                    Console.WriteLine("Your Number cannot be negative. Please Try Again:");
+                    while (!Int32.TryParse(Console.ReadLine(), out userNum))
+                        Console.WriteLine("Invalid Integer. Please Try Again:");
+                }
+
+                Console.WriteLine();
+                Console.WriteLine($"Your number is {userNum}. Good Job!"); 
+            }
+
+        }
         static void Main(string[] args)
         {
             bool quit = false;
@@ -22,6 +75,7 @@
 
                 if (choice == "1")
                 {
+                    Prompt();
                     Console.WriteLine();
                     Console.WriteLine("Press Enter to Go Back");
                     Console.ReadLine();
