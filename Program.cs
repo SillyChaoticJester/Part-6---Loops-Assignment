@@ -17,6 +17,39 @@
                 Console.WriteLine("3. Double Dice");
                 Console.WriteLine("Q. Leave, I guess.");
                 Console.WriteLine();
+                choice = Console.ReadLine().ToLower().Trim();
+                Console.WriteLine();
+
+                if (choice == "1")
+                {
+                    Console.WriteLine();
+                    Console.WriteLine("Press Enter to Go Back");
+                    Console.ReadLine();
+                }
+                else if (choice == "2")
+                {
+                    Console.WriteLine();
+                    Console.WriteLine("Press Enter to Go Back");
+                    Console.ReadLine();
+                }
+                else if (choice == "3")
+                {
+                    Console.WriteLine();
+                    Console.WriteLine("Press Enter to Go Back");
+                    Console.ReadLine();
+                }
+                else if (choice == "q")
+                {
+                    quit = true;
+                    Console.WriteLine();
+                    Console.WriteLine("Alright, cya. Bye bye.");
+                }
+                else
+                {
+                    Console.WriteLine();
+                    Console.WriteLine("That's not an option, silly goose.");
+                }
+
             }
         }
     }
