@@ -55,6 +55,10 @@
             }
 
         }
+        public static void Bank()
+        {
+
+        }
         static void Main(string[] args)
         {
             bool quit = false;
