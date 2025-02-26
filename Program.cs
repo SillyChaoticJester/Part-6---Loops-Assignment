@@ -59,6 +59,72 @@
         {
 
         }
+        public static void DoubleDice()
+        {
+            decimal userMoney = 150.00M, deposit, withdrawal;
+            string choice = "";
+            bool quit = false;
+
+            while (!quit)
+            {
+                Console.WriteLine($"Welcome to the BoB ATM. You currently have ${userMoney}. Please select one of the options:");
+                Console.WriteLine("(Remember that every Transaction you make costs $0.75 each)");
+                Console.WriteLine();
+                Console.WriteLine("- Deposit");
+                Console.WriteLine("- Withdrawal");
+                Console.WriteLine("- Bill Payment");
+                Console.WriteLine("- Account Balance Update");
+                Console.WriteLine("- Quit");
+                Console.WriteLine();
+                choice = Console.ReadLine().ToLower().Trim();
+                Console.WriteLine();
+
+                if (choice == "deposit")
+                {
+                    userMoney = userMoney - 0.75M;
+                    Console.WriteLine($"You currently have ${userMoney}. How much would you like to deposit?");
+                    Console.WriteLine();
+                    while (!Decimal.TryParse(Console.ReadLine(), out deposit))
+                        Console.WriteLine("Invalid Integer, please try again:");
+                    while (deposit < 0)
+                    {
+                        Console.WriteLine("Invalid Integer, please try again:");
+                        while (!Decimal.TryParse(Console.ReadLine(), out deposit))
+                            Console.WriteLine("Invalid Integer, please try again:");
+                    }
+                    userMoney = userMoney + deposit;
+                    Console.WriteLine("Thank you for Depositing!");
+                }
+                else if (choice == "withdrawal")
+                {
+                    userMoney = userMoney - 0.75M;
+                    Console.WriteLine($"You currently have ${userMoney}. How much would you like to withdrawal?");
+                    Console.WriteLine();
+                    while (!Decimal.TryParse(Console.ReadLine(), out withdrawal))
+                        Console.WriteLine("Invalid Integer, please try again:");
+                    while (withdrawal < 0)
+                    {
+                        Console.WriteLine("Invalid Integer, please try again:");
+                        while (!Decimal.TryParse(Console.ReadLine(), out deposit))
+                            Console.WriteLine("Invalid Integer, please try again:");
+                    }
+                    while (withdrawal > userMoney)
+                    {
+                        Console.WriteLine("You cannot withdrawal more than what you own, please try again:");
+                        while (!Decimal.TryParse(Console.ReadLine(), out deposit))
+                            Console.WriteLine("Invalid Integer, please try again:");
+                    }
+                    while (withdrawal == userMoney)
+                    {
+                        Console.WriteLine("You need enough to pay for the transaction fee, please try again:");
+                        while (!Decimal.TryParse(Console.ReadLine(), out deposit))
+                            Console.WriteLine("Invalid Integer, please try again:");
+                    }
+                    userMoney = userMoney - withdrawal;
+                    Console.WriteLine("Thank you for Withdrawaling!");
+                }
+            }
+        }
         static void Main(string[] args)
         {
             bool quit = false;
