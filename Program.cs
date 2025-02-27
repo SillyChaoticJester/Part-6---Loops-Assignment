@@ -57,10 +57,6 @@
         }
         public static void Bank()
         {
-
-        }
-        public static void DoubleDice()
-        {
             decimal userMoney = 150.00M, deposit, withdrawal;
             string choice = "";
             bool quit = false;
@@ -123,7 +119,47 @@
                     userMoney = userMoney - withdrawal;
                     Console.WriteLine("Thank you for Withdrawaling!");
                 }
+                else if (choice == "bill payment")
+                {
+                    userMoney = userMoney - 0.75M;
+                }
+                else if (choice == "account balance update")
+                {
+                    userMoney = userMoney - 0.75M;
+                    Console.WriteLine($"You now own ${userMoney}.");
+                }
+                else if (choice == "quit")
+                {
+                    quit = true;
+                    Console.WriteLine("Thank you for stopping at the BoB ATM. Come again soon!");
+                }
+                else
+                {
+                    Console.WriteLine("Invalid Choice, please try again:");
+                }
             }
+        }
+        public static void DoubleDice()
+        {
+            int rolls = 0;
+            Die die1, die2;
+            die1 = new Die();
+            die2 = new Die();
+
+            Console.WriteLine("Two die are going to roll until we get Doubles!");
+            Console.WriteLine("Press ENTER to continue:");
+            Console.ReadLine();
+            
+            while (die1.Roll != die2.Roll)
+            {
+                rolls++;
+                die1.RollDie();
+                die2.RollDie();
+                die1.DrawDie();
+                die2.DrawDie();
+                Console.ReadLine();
+            }
+            Console.WriteLine($"It took {rolls} rolls to get Doubles.");
         }
         static void Main(string[] args)
         {
