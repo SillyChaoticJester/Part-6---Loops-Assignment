@@ -57,7 +57,7 @@
         }
         public static void Bank()
         {
-            decimal userMoney = 150.00M, deposit, withdrawal;
+            decimal userMoney = 150.00M, deposit, withdrawal, bill;
             string choice = "";
             bool quit = false;
 
@@ -101,19 +101,19 @@
                     while (withdrawal < 0)
                     {
                         Console.WriteLine("Invalid Integer, please try again:");
-                        while (!Decimal.TryParse(Console.ReadLine(), out deposit))
+                        while (!Decimal.TryParse(Console.ReadLine(), out withdrawal))
                             Console.WriteLine("Invalid Integer, please try again:");
                     }
                     while (withdrawal > userMoney)
                     {
                         Console.WriteLine("You cannot withdrawal more than what you own, please try again:");
-                        while (!Decimal.TryParse(Console.ReadLine(), out deposit))
+                        while (!Decimal.TryParse(Console.ReadLine(), out withdrawal))
                             Console.WriteLine("Invalid Integer, please try again:");
                     }
                     while (withdrawal == userMoney)
                     {
                         Console.WriteLine("You need enough to pay for the transaction fee, please try again:");
-                        while (!Decimal.TryParse(Console.ReadLine(), out deposit))
+                        while (!Decimal.TryParse(Console.ReadLine(), out withdrawal))
                             Console.WriteLine("Invalid Integer, please try again:");
                     }
                     userMoney = userMoney - withdrawal;
@@ -122,11 +122,30 @@
                 else if (choice == "bill payment")
                 {
                     userMoney = userMoney - 0.75M;
-                }
-                else if (choice == "account balance update")
-                {
-                    userMoney = userMoney - 0.75M;
-                    Console.WriteLine($"You now own ${userMoney}.");
+                    Console.WriteLine($"You currently have ${userMoney}. How much would you like to pay for your bills for?");
+                    Console.WriteLine();
+                    while (!Decimal.TryParse(Console.ReadLine(), out bill))
+                        Console.WriteLine("Invalid Integer, please try again:");
+                    while (bill < 0)
+                    {
+                        Console.WriteLine("Invalid Integer, please try again:");
+                        while (!Decimal.TryParse(Console.ReadLine(), out bill))
+                            Console.WriteLine("Invalid Integer, please try again:");
+                    }
+                    while (bill > userMoney)
+                    {
+                        Console.WriteLine("You cannot withdrawal more than what you own, please try again:");
+                        while (!Decimal.TryParse(Console.ReadLine(), out bill))
+                            Console.WriteLine("Invalid Integer, please try again:");
+                    }
+                    while (bill == userMoney)
+                    {
+                        Console.WriteLine("You need enough to pay for the transaction fee, please try again:");
+                        while (!Decimal.TryParse(Console.ReadLine(), out bill))
+                            Console.WriteLine("Invalid Integer, please try again:");
+                    }
+                    userMoney = userMoney - bill;
+                    Console.WriteLine("Thank you for paying for your bills!");
                 }
                 else if (choice == "quit")
                 {
@@ -135,6 +154,7 @@
                 }
                 else
                 {
+                    userMoney = userMoney - 0.75M;
                     Console.WriteLine("Invalid Choice, please try again:");
                 }
             }
