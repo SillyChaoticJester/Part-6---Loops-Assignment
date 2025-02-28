@@ -52,6 +52,7 @@
 
                 Console.WriteLine();
                 Console.WriteLine($"Your number is {userNum}. Good Job!"); 
+                done = true;
             }
 
         }
@@ -69,7 +70,6 @@
                 Console.WriteLine("- Deposit");
                 Console.WriteLine("- Withdrawal");
                 Console.WriteLine("- Bill Payment");
-                Console.WriteLine("- Account Balance Update");
                 Console.WriteLine("- Quit");
                 Console.WriteLine();
                 choice = Console.ReadLine().ToLower().Trim();
@@ -90,6 +90,7 @@
                     }
                     userMoney = userMoney + deposit;
                     Console.WriteLine("Thank you for Depositing!");
+                    Console.WriteLine();
                 }
                 else if (choice == "withdrawal")
                 {
@@ -118,6 +119,7 @@
                     }
                     userMoney = userMoney - withdrawal;
                     Console.WriteLine("Thank you for Withdrawaling!");
+                    Console.WriteLine();
                 }
                 else if (choice == "bill payment")
                 {
@@ -146,11 +148,13 @@
                     }
                     userMoney = userMoney - bill;
                     Console.WriteLine("Thank you for paying for your bills!");
+                    Console.WriteLine();
                 }
                 else if (choice == "quit")
                 {
                     quit = true;
                     Console.WriteLine("Thank you for stopping at the BoB ATM. Come again soon!");
+                    Console.WriteLine();
                 }
                 else
                 {
@@ -208,12 +212,14 @@
                 }
                 else if (choice == "2")
                 {
+                    Bank();
                     Console.WriteLine();
                     Console.WriteLine("Press Enter to Go Back");
                     Console.ReadLine();
                 }
                 else if (choice == "3")
                 {
+                    DoubleDice();
                     Console.WriteLine();
                     Console.WriteLine("Press Enter to Go Back");
                     Console.ReadLine();
